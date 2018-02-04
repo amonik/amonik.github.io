@@ -8,9 +8,7 @@ yum groupinstall "Development Tools"
 yum groupinstall "Virtualization Tools"
 yum install virt-install libvirt-python virt-manager virt-install libvirt-client
 ```
-
 # Setup Image Location
-
 ```
 mkdir /home/admin/KVM
 su - root
@@ -19,7 +17,6 @@ restorecon /home/admin/KVM
 rmdir /var/lib/libvirt/images
 ln -s /home/admin/KVM /var/lib/libvirt/images
 ```
-
 # Create Image File and deploy
 ```
 cd /home/admin/KVM
@@ -51,4 +48,3 @@ exit
 ```
 virsh reboot vm1
 ```
-
