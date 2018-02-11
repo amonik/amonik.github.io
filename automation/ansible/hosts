@@ -1,0 +1,8 @@
+[control]
+server1 ansible_connection=local
+
+[syslogservers]
+syslog ansible_user=root
+
+[elkservers]
+elk ansible_user=root

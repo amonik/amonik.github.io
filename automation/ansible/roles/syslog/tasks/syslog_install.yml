@@ -1,0 +1,41 @@
+---
+
+- name: Install syslog
+  package: 
+    name: rsyslog
+    state: latest
+
+- name: Install semanage
+  package:
+    name: policycoreutils-python
+    state: latest
+
+- name: Set syslog port to 10514
+  seport: 
+    ports: 10514
+    proto: tcp
+    setype: syslogd_port_t
+    state: present
+
+- name: Restart rsyslog service
+  service: rsyslog
+  state: restarted
+
+- name: Configuring firewalld
+  firewalld:
+    port: 10514/tcp
+    permanent: true
+    state: enabled
+
+- name: Configuring rsyslog to Receive and Sort Remote Log Messages
+  copy:
+    src: /root/ansible/roles/syslog/files/rsyslog.conf
+    dest: /etc/rsyslog.conf
+    mode: 0644
+
+- name: Restart and enable rsyslog
+  service: rsyslog
+  state: restarted
+  enabled: yes
+
+...
