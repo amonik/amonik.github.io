@@ -21,9 +21,9 @@ virsh attach-interface --domain vyos --type network \
 
 Each network is attached to a bridge
 ```
-virsh net-dumpxml
-```
 virsh net-dumpxml default
+```
+```
 <network>
   <name>default</name>
   <uuid>dda581c1-9707-40ef-9eb5-9392525d733e</uuid>
@@ -50,18 +50,21 @@ virsh net-dumpxml default
 ```
 virsh net-edit default
 ```
-Make your edits
-```
 ## restart the network
+```
 virsh destory default
 virsh create default
 ```
 As we can see in the above XML the network type is NAT and the bride it is connect to is virbr0
 
 ## View the the bridge
-```brctl show```
+```
+brctl show
+```
 ## View the IP and bridge configuration of a virtual machine
-```virsh domifaddr vyos```
+```
+virsh domifaddr vyos
+```
 ```
  Name       MAC address          Protocol     Address
 -------------------------------------------------------------------------------
