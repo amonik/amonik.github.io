@@ -20,10 +20,13 @@ ln -s /home/admin/KVM /var/lib/libvirt/images
 # Create Image File and deploy
 ```
 cd /home/admin/KVM
- wget http://mirrors.mit.edu/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
+wget http://mirrors.mit.edu/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
 qemu-img create -f qcow2 /home/admin/KVM/vm1.qcow2 20G
- virt-install --virt-type kvm --vcpu 2 --name vm1 --ram 4096   --disk /home/admin/KVM/vm1.qcow2,format=qcow2   --network network=default   --graphics vnc,listen=0.0.0.0 --noautoconsole   --os-type=linux --os-variant=centos7.0   --location=/home/admin/KVM//CentOS-7-x86_64-Minimal-1708.iso
-
+virt-install --virt-type kvm --vcpu 2 --name vm1 --ram 4096 \
+  --disk /home/admin/KVM/vm1.qcow2,format=qcow2   --network network=default \
+  --graphics vnc,listen=0.0.0.0 --noautoconsole  \
+  --os-type=linux --os-variant=centos7.0 \
+  --location=/home/admin/KVM//CentOS-7-x86_64-Minimal-1708.iso
 ```
 Go to your server and go through the installation process.
 Log into your serve and get the IP address and SSH.
