@@ -4,6 +4,8 @@
 ```
 wget https://downloads.vyos.io/release/1.1.8/vyos-1.1.8-amd64.iso
 
+create -f qcow2 /home/admin/KVM/vyos.qcow2 20G
+
 virt-install --virt-type kvm --vcpu 2 --name vyos --ram 2048 \
   --disk /home/admin/KVM/vyos.qcow2,format=qcow2 \
   --network network=default   --graphics vnc,listen=0.0.0.0 \
